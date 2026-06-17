@@ -1,0 +1,30 @@
+# ─────────────────────────────────────────────
+#  LLM Creds
+# ─────────────────────────────────────────────
+
+LLM_API_KEY = <LLM_API_KEY>
+
+
+# ─────────────────────────────────────────────
+#  Database Creds
+# ─────────────────────────────────────────────
+
+DB_USER = postgres
+DB_PASSWORD = postgres
+DB_HOST = localhost
+DB_PORT = 5432
+DB_NAME = chatbot_db
+
+# ─────────────────────────────────────────────
+#  EMBEDDING LLM Creds
+# ─────────────────────────────────────────────
+
+EMBEDDING_API_KEY = <EMBEDDING_API_KEY>
+
+
+# ─────────────────────────────────────────────
+#  If Cloud Vector DB using
+# ─────────────────────────────────────────────
+
+CHROMA_API_KEY = test
+CHROMA_TENANT = test

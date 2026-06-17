@@ -1,0 +1,138 @@
+# ─────────────────────────────────────────────
+#  LLM Configuration
+# ─────────────────────────────────────────────
+llm:
+  provider: google_gemini        # anthropic | openai | groq | google_gemini
+  model: gemini-2.5-flash
+  temperature: 0.5
+  max_tokens: 2048
+
+
+# ─────────────────────────────────────────────
+#  Feature Toggles  ← flip these
+# ─────────────────────────────────────────────
+features:
+  tools_enabled:
+    calculator: true        # For Calculation
+    memory_enabled: true    # RAG / vector store
+
+
+  hitl_enabled: false     # Phase 4 — human-in-the-loop
+  mcp_enabled: false      # Phase 5 — MCP server integrations
+
+
+# ─────────────────────────────────────────────
+#  RAG Configuration
+# ─────────────────────────────────────────────
+rag:
+
+  # Embedding LLM Configuration
+  embedding:    
+    provider: huggingface        # openai | anthropic | google | huggingface
+    model: sentence-transformers/all-MiniLM-L6-v2
+    # EMBEDDING_API_KEY: Must set in env file
+
+  # Vector DB Configuration
+  vector_db:
+    usage: local                    #  cloud | local
+    collection_name: collection_1        
+    cloud:
+      database: Chroma_db_test
+      # CHROMA_API_KEY: Must set in env file
+      # CHROMA_TENANT: Must set in env file
+  
+    local:
+      persist_directory: chroma_db
+
+  # RAG Specific Features
+
+  uploads_dir   : data/uploads/
+  chunk_size    : 300
+  chunk_overlap : 50
+  top_k         : 5
+
+
+# ─────────────────────────────────────────────
+#  Short Term Memory
+# ─────────────────────────────────────────────
+
+stm:
+  messages_kept: 10
+
+
+# ─────────────────────────────────────────────
+#  Prompts
+# ─────────────────────────────────────────────
+
+prompts:
+
+  summary_prompt: |
+    You are updating an existing conversation summary.
+
+    Existing Summary:
+    {existing_summary}
+
+    New Conversation:
+    {new_conversation}
+
+    Instructions:
+    - Review the existing summary and the new conversation.
+    - Preserve important information from the existing summary.
+    - Incorporate any new relevant details from the conversation.
+    - Avoid duplicating information.
+    - Return a single updated summary.
+
+    Updated Summary:
+
+  memory_prompt: |
+    You are responsible for updating and maintaining accurate user memory.
+
+    CURRENT USER DETAILS (existing memories):
+    {user_details_content}
+
+    TASK:
+    - Review the user's latest message.
+    - Extract user-specific info worth storing long-term (identity, stable preferences, ongoing projects/goals).
+    - For each extracted item, set is_new=true ONLY if it adds NEW information compared to CURRENT USER DETAILS.
+    - If it is basically the same meaning as something already present, set is_new=false.
+    - Keep each memory as a short atomic sentence.
+    - No speculation; only facts stated by the user.
+    - If there is nothing memory-worthy, return should_write=false and an empty list.
+    
+  system_prompt: |
+    You are a helpful assistant with memory capabilities.
+
+    If user-specific memory is available, use it to personalize
+    your responses based on what you know about the user.
+
+    Your goal is to provide relevant, friendly, and tailored
+    assistance that reflects the user’s preferences, context, and past interactions.
+
+    If the user’s name or relevant personal context is available, always personalize your responses by:
+      - Always address the user by name (e.g., "Sure, Jatin...") when appropriate.
+      - Reference known projects, tools, or preferences (e.g., "your chatbot Python-based project").
+      - Adjust the tone to feel friendly, natural, and directly aimed at the user.
+
+    Avoid generic phrasing when personalization is possible.
+
+    Use personalization especially in:
+      - Greetings and transitions.
+      - Help or guidance tailored to tools and frameworks the user uses.
+      - Follow-up messages that continue from past context.
+
+    Always ensure that personalization is based only on known user details and not assumed.
+
+    In the end, suggest 3 relevant further questions if required based on the current response and user profile.
+
+    The user's memory (which may be empty) is provided as:
+
+    {user_details_content}
+
+
+# ─────────────────────────────────────────────
+#  App UI
+# ─────────────────────────────────────────────
+app:
+  title: Agentic AI Chatbot
+  icon: "🤖"
+  description: A minimal agentic chatbot — built with LangGraph + Streamlit

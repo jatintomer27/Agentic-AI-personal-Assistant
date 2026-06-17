@@ -1,0 +1,59 @@
+# ─────────────────────────────────────────────
+#  Core
+# ─────────────────────────────────────────────
+
+pydentic
+python-box
+dotenv
+ensure
+langchain
+langgraph
+streamlit
+
+# ─────────────────────────────────────────────
+#  LLM Providers (install whichever you use)
+# ─────────────────────────────────────────────
+
+# langchain-anthropic         # for Claude
+langchain-openai            # for GPT models
+# langchain-groq              # for Groq-hosted models
+langchain_google_genai      # for Google Gemini
+
+
+# ─────────────────────────────────────────────
+#  Database
+# ─────────────────────────────────────────────
+
+langgraph-checkpoint-postgres
+sqlalchemy
+psycopg2-binary
+
+# ─────────────────────────────────────────────
+#  RAG Integration
+# ─────────────────────────────────────────────
+
+pdfplumber
+langchain-text-splitters
+chromadb
+
+
+# ─────────────────────────────────────────────
+#  EMBEDDING LLM Providers (install whichever you use)
+# ─────────────────────────────────────────────
+
+# langchain-voyageai            # for Voyage AI
+# langchain-openai              # for GPT models
+# langchain-groq                # for Groq-hosted models
+# langchain-ollama              # for ollama
+# langchain_google_genai        # for Google Gemini
+langchain-huggingface           # for Hugging Face 
+sentence-transformers           # for Hugging Face Sentence transformer
+
+
+# ─────────────────────────────────────────────
+#  To remove errors from terminal
+# ─────────────────────────────────────────────
+
+torchvision
+
+-e .
