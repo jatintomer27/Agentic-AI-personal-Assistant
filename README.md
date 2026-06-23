@@ -1,5 +1,3 @@
-# Agentic-AI-personal-Assistant
-
 # 🤖 Agentic AI personal Assistant
 
 An AI-powered personal assistant built with **LangGraph**, **Streamlit**, **PostgreSQL**, and **ChromaDB** that combines Retrieval-Augmented Generation (RAG), long-term memory, and configurable tool integrations to deliver personalized, context-aware conversations.
@@ -78,38 +76,6 @@ PostgreSQL is used for:
 
 ---
 
-# 🏗️ Architecture
-
-```text
-User
- │
- ▼
-Streamlit UI
- │
- ▼
-LangGraph Workflow
- │
- ├── Short-Term Memory
- │
- ├── Long-Term Memory (PostgreSQL)
- │
- ├── Tool Execution
- │
- └── RAG Pipeline
-       │
-       ├── ChromaDB
-       ├── Embeddings
-       └── Document Retrieval
- │
- ▼
-LLM Provider
- │
- ▼
-Final Response
-```
-
----
-
 # 🏗️ Engineering Concepts Implemented
 
 - Retrieval-Augmented Generation (RAG)
@@ -127,16 +93,6 @@ Final Response
 - Configuration-Driven System Design
 
 - Containerized Deployment
-
----
-
-# ⚙️ Configuration
-
-Application behavior is controlled through:
-
-```text
-config/settings.yaml
-```
 
 ---
 
@@ -279,7 +235,7 @@ This enables personalized interactions across sessions.
 Create a `.env` file using the provided template:
 
 ```bash
-cp .env.example .env
+cp env_example.txt .env
 ```
 
 Update the values according to your environment.
@@ -306,7 +262,7 @@ Required credentials include:
 ### Clone Repository
 
 ```bash
-git clone <repository-url>
+git clone git@github.com:jatintomer27/Agentic-AI-personal-Assistant.git
 cd chatbot
 ```
 
@@ -315,14 +271,14 @@ cd chatbot
 Linux / Mac
 
 ```bash
-python -m venv .venv
-source .venv/bin/activate
+python -m venv chatbot
+source chatbot/bin/activate
 ```
 
 Windows
 
 ```bash
-.venv\Scripts\activate
+chatbot\Scripts\activate
 ```
 
 ### Install Dependencies
@@ -334,7 +290,7 @@ pip install -r requirements.txt
 ### Configure Environment
 
 ```bash
-cp .env.example .env
+cp env_example.txt .env
 ```
 
 ### Configure Application
