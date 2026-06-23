@@ -310,6 +310,16 @@ config/settings.yaml
 
 according to your requirements.
 
+### Configure Environment Variables
+
+Update:
+
+```text
+.env
+```
+
+according to your config/settings.yaml.
+
 ### Start Application
 
 ```bash
