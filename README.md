@@ -263,7 +263,7 @@ Required credentials include:
 
 ```bash
 git clone git@github.com:jatintomer27/Agentic-AI-personal-Assistant.git
-cd chatbot
+cd Agentic-AI-personal-Assistant
 ```
 
 ### Create Virtual Environment
@@ -271,7 +271,7 @@ cd chatbot
 Linux / Mac
 
 ```bash
-python -m venv chatbot
+python3 -m venv chatbot
 source chatbot/bin/activate
 ```
 
