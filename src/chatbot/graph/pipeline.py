@@ -202,7 +202,6 @@ def get_chatbot():
     Loads config and builds the compiled LangGraph chatbot.
     Call this once at app startup via st.cache_resource.
     """
-
     try:
         _config = load_config_file(__file__)
     except Exception as e:

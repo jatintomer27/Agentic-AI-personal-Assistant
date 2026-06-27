@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: chatbot
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+
+  chatbot:
+    # image: jatintomer/agentic_ai_chatbot:2.0.0
+    build: .
+    ports:
+      - "8019:8501"
+    environment:
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: chatbot
+    depends_on:
+      - postgres

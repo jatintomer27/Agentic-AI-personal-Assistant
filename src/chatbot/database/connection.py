@@ -26,10 +26,12 @@ DB_PORT     = os.getenv("DB_PORT",     "5432")
 DB_NAME     = os.getenv("DB_NAME",     "chatbot_db")
 
 # Connection URL to the TARGET database
-DATABASE_URL = f"postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+DATABASE_STR = f"://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+DATABASE_RAW_URL = f"postgresql+psycopg{DATABASE_STR}"
+DATABASE_URL = f"postgresql{DATABASE_STR}"
 
 # Connection URL to 'postgres' (default db) — used to CREATE our db if missing
-POSTGRES_URL = f"postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/postgres"
+POSTGRES_URL = f"postgresql+psycopg://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/postgres"
 
 
 # ─────────────────────────────────────────────
@@ -108,7 +110,7 @@ def init_db():
     try:
         # 2. Create engine pointed at our database
         engine = create_engine(
-            DATABASE_URL,
+            DATABASE_RAW_URL,
             pool_size=5,          # max persistent connections
             max_overflow=10,      # extra connections allowed under load
             pool_pre_ping=True,   # test connection before using it

@@ -338,32 +338,57 @@ http://localhost:8501
 
 ## Docker Setup
 
-### Pull Docker Image
+### Prerequisites
+
+* Docker
+* Git
+
+### Clone Repository
 
 ```bash
-docker pull <docker-image-name>
+git clone git@github.com:jatintomer27/Agentic-AI-personal-Assistant.git
+```
+
+```bash
+cd Agentic-AI-personal-Assistant
 ```
 
 ### Configure Environment
 
 ```bash
-cp .env.example .env
+cp env_example.txt .env
 ```
 
-### Run Container
+### Configure Application
+
+Update:
+
+```text
+config/settings.yaml
+```
+
+according to your requirements.
+
+### Configure Environment Variables
+
+Update:
+
+```text
+.env
+```
+
+according to your config/settings.yaml.
+
+### Run Container and build Image
 
 ```bash
-docker run -d \
-  --name personal-chatbot \
-  --env-file .env \
-  -p 8501:8501 \
-  <docker-image-name>
+docker compose up
 ```
 
 Open:
 
 ```text
-http://localhost:8501
+http://localhost:8019
 ```
 
 ---
@@ -399,7 +424,6 @@ http://localhost:8501
 
 * Python 3.11
 * SQLAlchemy
-* Psycopg
 
 ### Frontend
 
