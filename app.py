@@ -160,6 +160,7 @@ def reload_chat_sessions():
         s['session_id']: s['session_name']
         for s in get_all_sessions(db_session)
     }
+
 def ai_only_stream(config, user_input):
     try:
         for message_chunk, metadata in chatbot.stream(
@@ -226,6 +227,7 @@ st.sidebar.title('LangGraph Chatbot')
 # ------------------- New Chat -------------------
 if st.sidebar.button('New Chat', key='new_chat_btn'):
     reset_chat()
+    
 # ------------------- Documents Upload -------------------
 st.sidebar.divider()
 st.sidebar.header("📄 Documents")

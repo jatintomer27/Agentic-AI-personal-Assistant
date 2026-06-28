@@ -6,6 +6,23 @@ The chatbot can ingest private documents, remember user preferences across sessi
 
 ---
 
+## 📑 Table of Contents
+
+* [✨ Key Highlights](#-key-highlights)
+* [🚀 Engineering Highlights](#-engineering-highlights)
+* [🏗️ Engineering Concepts Implemented](#%EF%B8%8F-engineering-concepts-implemented)
+* [⚙️ Configuration](#llm-configuration)
+* [📚 RAG Configuration](#-rag-configuration)
+* [🧠 Memory System](#-memory-system)
+* [🔐 Environment Variables](#-environment-variables)
+* [🚀 Running the Application](#-running-the-application)
+* [📂 Storage Components](#-storage-components)
+* [🛠️ Technology Stack](#%EF%B8%8F-technology-stack)
+* [🔒 Privacy](#-privacy)
+* [📄 License](#-license)
+
+---
+
 ## 🚀 Key Highlights
 
 ### 🧠 Persistent Memory
